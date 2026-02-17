@@ -1,0 +1,21 @@
+{
+  "name": "jumpfrog",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Hop 'n' Jump (Kafitz-Kafutz) - A multiplayer strategic frog-hopping board game",
+  "author": "",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=9.0.0"
+  },
+  "packageManager": "pnpm@9.15.0",
+  "scripts": {
+    "dev": "pnpm -C apps/client dev",
+    "dev:server": "pnpm -C apps/server dev",
+    "build": "pnpm -C apps/client build",
+    "build:server": "pnpm -C apps/server build",
+    "test": "pnpm -C packages/rules test",
+    "lint": "pnpm -C apps/client lint"
+  }
+}
