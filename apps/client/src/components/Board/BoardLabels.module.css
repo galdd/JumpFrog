@@ -1,0 +1,58 @@
+/* Corners */
+.cornerTopLeft { grid-area: corner-tl; }
+.cornerTopRight { grid-area: corner-tr; }
+.cornerBottomLeft { grid-area: corner-bl; }
+.cornerBottomRight { grid-area: corner-br; }
+
+/* Files (A-H) - account for board padding (7% on each side = 14% total) */
+.filesTop,
+.filesBottom {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 0;
+  padding: 0 7%;
+}
+
+.filesTop { 
+  grid-area: files-top;
+  align-items: flex-end;
+  padding-bottom: calc(var(--board-scale) * 4px);
+}
+
+.filesBottom { 
+  grid-area: files-bottom;
+  align-items: flex-start;
+  padding-top: calc(var(--board-scale) * 4px);
+}
+
+/* Ranks (8-1) - account for board padding */
+.ranksLeft,
+.ranksRight {
+  display: grid;
+  grid-template-rows: repeat(8, 1fr);
+  gap: 0;
+  padding: 7% 0;
+}
+
+.ranksLeft { 
+  grid-area: ranks-left;
+  justify-items: flex-end;
+  padding-right: calc(var(--board-scale) * 4px);
+}
+
+.ranksRight { 
+  grid-area: ranks-right;
+  justify-items: flex-start;
+  padding-left: calc(var(--board-scale) * 4px);
+}
+
+/* Label styling - scales with board */
+.label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: calc(var(--board-scale) * 16px);
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}

@@ -1,0 +1,105 @@
+.boardWrapper {
+  display: grid;
+  grid-template-areas:
+    "corner-tl files-top corner-tr"
+    "ranks-left board ranks-right"
+    "corner-bl files-bottom corner-br";
+  grid-template-columns: calc(var(--board-scale) * 35px) 1fr calc(var(--board-scale) * 35px);
+  grid-template-rows: calc(var(--board-scale) * 35px) 1fr calc(var(--board-scale) * 35px);
+  gap: calc(var(--board-scale) * 6px);
+  /* Calculate size to fit viewport height minus header and padding */
+  --max-board-size: min(
+    calc(100vh - 180px),
+    calc(100vw - 40px),
+    calc(var(--board-scale) * 800px)
+  );
+  width: var(--max-board-size);
+  height: auto;
+  margin: 0 auto;
+  max-width: 100%;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .boardWrapper {
+    --max-board-size: min(
+      calc(100vh - 140px),
+      calc(100vw - 20px),
+      calc(var(--board-scale) * 800px)
+    );
+    gap: calc(var(--board-scale) * 4px);
+  }
+}
+
+@media (max-width: 480px) {
+  .boardWrapper {
+    --max-board-size: min(
+      calc(100vh - 120px),
+      calc(100vw - 12px),
+      calc(var(--board-scale) * 800px)
+    );
+    gap: calc(var(--board-scale) * 3px);
+    grid-template-columns: calc(var(--board-scale) * 28px) 1fr calc(var(--board-scale) * 28px);
+    grid-template-rows: calc(var(--board-scale) * 28px) 1fr calc(var(--board-scale) * 28px);
+  }
+}
+
+/* Account for mobile browser chrome */
+@supports (-webkit-touch-callout: none) {
+  .boardWrapper {
+    --max-board-size: min(
+      calc(100svh - 180px),
+      calc(100vw - 40px),
+      calc(var(--board-scale) * 800px)
+    );
+  }
+  
+  @media (max-width: 768px) {
+    .boardWrapper {
+      --max-board-size: min(
+        calc(100svh - 140px),
+        calc(100vw - 20px),
+        calc(var(--board-scale) * 800px)
+      );
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .boardWrapper {
+      --max-board-size: min(
+        calc(100svh - 120px),
+        calc(100vw - 12px),
+        calc(var(--board-scale) * 800px)
+      );
+    }
+  }
+}
+
+.board {
+  grid-area: board;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  gap: 0;
+  width: 100%;
+  aspect-ratio: 1;
+  background-image: url("/image/board.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+  padding: 7%;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  border-radius: calc(var(--board-scale) * 8px);
+  transition: transform 0.6s ease;
+}
+
+.board.rotated {
+  transform: rotate(180deg);
+}
+
+.board :global(.darkSquare) {
+  background-image: url("/image/tile_light_green.png");
+  background-size: var(--tile-scale);
+  background-position: center;
+  background-repeat: no-repeat;
+}

@@ -1,0 +1,102 @@
+.wrapper {
+  position: relative;
+  display: inline-block;
+  z-index: 100;
+}
+
+.trigger {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border: none;
+  border-radius: calc(var(--spacing-unit) * 0.7);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  cursor: pointer;
+  font-size: calc(var(--board-scale) * 14px);
+  font-weight: 600;
+  color: #334155;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.trigger:hover {
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.flag {
+  font-size: 1.15em;
+  line-height: 1;
+}
+
+.label {
+  white-space: nowrap;
+}
+
+.chevron {
+  font-size: 0.85em;
+  transition: transform 0.2s ease;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  min-width: 160px;
+  list-style: none;
+  margin: 0;
+  padding: 4px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(14px);
+  border-radius: calc(var(--spacing-unit) * 0.7);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  animation: dropIn 0.15s ease;
+}
+
+[dir="rtl"] .dropdown {
+  right: auto;
+  left: 0;
+}
+
+@keyframes dropIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  border: none;
+  background: transparent;
+  padding: 8px 12px;
+  border-radius: calc(var(--spacing-unit) * 0.5);
+  cursor: pointer;
+  font-size: calc(var(--board-scale) * 14px);
+  font-weight: 500;
+  color: #334155;
+  text-align: start;
+  transition: background 0.15s ease;
+}
+
+.option:hover {
+  background: rgba(34, 197, 94, 0.12);
+}
+
+.active {
+  background: rgba(34, 197, 94, 0.18);
+  font-weight: 700;
+}
